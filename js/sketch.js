@@ -1,6 +1,5 @@
 let stars = [];
 function setup() {
-
 	input = createInput();
   input.position(20, 65);
 	input.attribute('placeholder', '願いはなんじゃ');
@@ -13,6 +12,7 @@ function setup() {
 	for(let i = 0; i < width/2; i++) {
 		stars.push(new Star(random(width), random(height)));
 	}
+
 }
 
 function draw() {
@@ -23,6 +23,9 @@ function draw() {
 		}
 		stars[i].display();
 	}
+
+	generateTake();
+
 }
 
 
@@ -44,4 +47,15 @@ function send() {
     }
 	};
 	request.send(null);
+}
+
+//座標は0から100で指定
+function w(_n) {
+  const w = width/100;
+  return w * _n;
+}
+
+function h(_n) {
+  const h = height/100;
+  return h * _n;
 }
