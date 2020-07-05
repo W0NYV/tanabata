@@ -1,11 +1,34 @@
 let stars = [];
+let tanzax = [];
+let Stanzax = [];
+let tanzakuData, input, input2, button;
+
+function preload() {
+	tanzakuData = loadJSON('https://script.google.com/macros/s/AKfycbzFIfTrPr8GZiz99nkn8cg3XHYxn72hOglzRAfiE7N9tUa6PSI/exec?');
+}
+
 function setup() {
+
+	//データ数を特定
+	const len = Object.keys(tanzakuData).length;
+
+	for(let i = 0; i < len-1; i++) {
+		const o = tanzakuData[i];
+		tanzax.push(new Tanzaku(o));
+	}
+
+
+
 	input = createInput();
   input.position(20, 65);
 	input.attribute('placeholder', '願いはなんじゃ');
 
+	input2 = createInput();
+  input2.position(20, 85);
+	input2.attribute('placeholder', '名前はなんじゃ');
+
   button = createButton('願う');
-  button.position(input.x + input.width, 65);
+  button.position(20, 105);
 	button.mousePressed(send);
 
 	createCanvas(windowWidth, windowHeight);
@@ -13,10 +36,15 @@ function setup() {
 		stars.push(new Star(random(width), random(height)));
 	}
 
+
+	textAlign(CENTER, CENTER);
+	rectMode(CENTER);
+	colorMode(HSB, 360, 100, 100, 100);
 }
 
 function draw() {
-	background(1,16,88);
+	background(230,99,35);
+
 	for(let i=0; i < stars.length; i++) {
 		if(i % 2 == 0) {
 			stars[i].glow();
@@ -26,14 +54,27 @@ function draw() {
 
 	generateTake();
 
+	for(let j = 0; j < Stanzax.length; j++) {
+		Stanzax[j].tategaki();
+		Stanzax[j].display();
+	}
+
 }
 
 
 function send() {
   const wish = input.value();
-  input.value('');
+	const name = input2.value();
+	let x = random(width);
+	let y = random(height);
 
-	var url = "https://script.google.com/macros/s/AKfycbzFIfTrPr8GZiz99nkn8cg3XHYxn72hOglzRAfiE7N9tUa6PSI/exec?name=WOのテスト&wish=" + wish + "&x=CCC&y=DDDD"; // リクエスト先URL
+	Stanzax.push(new SimulatedTanzaku(name, wish, x, y));
+
+  input.value('');
+	input2.value('');
+
+
+	var url = "https://script.google.com/macros/s/AKfycbzFIfTrPr8GZiz99nkn8cg3XHYxn72hOglzRAfiE7N9tUa6PSI/exec?name=" + name + "&wish=" + wish + "&x=" + x + "&y=" + y; // リクエスト先URL
 	var request = new XMLHttpRequest();
 	request.open('GET', url);
 	request.onreadystatechange = function () {

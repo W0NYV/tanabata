@@ -38,7 +38,7 @@ function take(_x, _y, _a) {
   translate(_x, _y);
   rotate(radians(_a));
   noStroke();
-	fill(81, 166, 10);
+	fill(93, 94, 65);
 
   //xは-50~50で指定、yは-50~100で指定
   beginShape();
@@ -53,20 +53,20 @@ function take(_x, _y, _a) {
   endShape();
 
 	push();
-  fill(46, 89, 10);
+  fill(93, 89, 35);
   translate(0, h(-86));
   ellipse(0, 0, w(1.2), h(10));
   pop();
 
   push();
-  fill(46, 89, 10);
+  fill(93, 89, 35);
   translate(w(4), h(-85));
   rotate(radians(45));
   ellipse(0, 0, w(1.2), h(10));
   pop();
 
   push();
-  fill(46, 89, 10);
+  fill(93, 89, 35);
   translate(w(-4), h(-85));
   rotate(radians(315));
   ellipse(0, 0, w(1.2), h(10));

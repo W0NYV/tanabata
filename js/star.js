@@ -7,13 +7,13 @@ class Star {
 	}
 
 	glow() {
-		this.a = 255 * abs(sin(this.t));
+		this.a = 100 * abs(sin(this.t));
 		this.t+= 0.02;
 	}
 
 	display() {
 		noStroke();
-		fill(255, this.a);
+		fill(0, 0, 100, this.a);
 		ellipse(this.location.x, this.location.y, this.size, this.size);
 	}
 
