@@ -68,26 +68,33 @@ function send() {
 	let x = random(width);
 	let y = random(height);
 
-	Stanzax.push(new SimulatedTanzaku(name, wish, x, y));
+	if(name != "" && wish != "") {
+		Stanzax.push(new SimulatedTanzaku(name, wish, x, y));
+
+		var url = "https://script.google.com/macros/s/AKfycbzFIfTrPr8GZiz99nkn8cg3XHYxn72hOglzRAfiE7N9tUa6PSI/exec?name=" + name + "&wish=" + wish + "&x=" + x + "&y=" + y; // リクエスト先URL
+
+		var request = new XMLHttpRequest();
+		request.open('GET', url);
+		request.onreadystatechange = function () {
+			if (request.readyState != 4) {
+     		// リクエスト中
+    	} else if (request.status != 200) {
+				// 失敗
+    	} else {
+      	// 取得成功
+      	// var result = request.responseText;
+    	}
+		};
+		request.send(null);
+	} else {
+		print("名前と願い事書いてください");
+	}
 
   input.value('');
 	input2.value('');
 
 
-	var url = "https://script.google.com/macros/s/AKfycbzFIfTrPr8GZiz99nkn8cg3XHYxn72hOglzRAfiE7N9tUa6PSI/exec?name=" + name + "&wish=" + wish + "&x=" + x + "&y=" + y; // リクエスト先URL
-	var request = new XMLHttpRequest();
-	request.open('GET', url);
-	request.onreadystatechange = function () {
-		if (request.readyState != 4) {
-     	// リクエスト中
-    } else if (request.status != 200) {
-      // 失敗
-    } else {
-      // 取得成功
-      // var result = request.responseText;
-    }
-	};
-	request.send(null);
+
 }
 
 //座標は0から100で指定
