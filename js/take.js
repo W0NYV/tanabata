@@ -60,14 +60,14 @@ function take(_x, _y, _a) {
 
   push();
   fill(93, 89, 35);
-  translate(w(4), h(-85));
+  translate(w(2), h(-85));
   rotate(radians(45));
   ellipse(0, 0, w(1.2), h(10));
   pop();
 
   push();
   fill(93, 89, 35);
-  translate(w(-4), h(-85));
+  translate(w(-2), h(-85));
   rotate(radians(315));
   ellipse(0, 0, w(1.2), h(10));
   pop();
