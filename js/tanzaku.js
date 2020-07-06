@@ -81,7 +81,7 @@ class cTanzaku {
 		this.y = _y;
 		push();
 		translate(this.x, this.y);
-		fill(100, 60, 100);
+		fill(0, 0, 100);
 		rect(-30, 20, 60, 180 + 2 * this.tw.length + 10 * this.tn.length);
 		textSize(12);
 		fill(0, 0, 0);
