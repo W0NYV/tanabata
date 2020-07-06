@@ -1,6 +1,5 @@
 let stars = [];
 let tanzax = [];
-let Stanzax = [];
 let tanzakuData, input, input2, button;
 
 function preload() {
@@ -14,10 +13,8 @@ function setup() {
 
 	for(let i = 0; i < len-1; i++) {
 		const o = tanzakuData[i];
-		tanzax.push(new Tanzaku(o));
+		tanzax.push(new Tanzaku(o.name, o.wish, o.x, o.y));
 	}
-
-
 
 	input = createInput();
   input.position(20, 65);
@@ -37,7 +34,7 @@ function setup() {
 	}
 
 
-	textAlign(CENTER, CENTER);
+	textAlign(CENTER, TOP);
 	rectMode(CENTER);
 	colorMode(HSB, 360, 100, 100, 100);
 }
@@ -52,11 +49,14 @@ function draw() {
 		stars[i].display();
 	}
 
-	generateTake();
+	generateTake(width/2);
+	generateTake(width/4 * 1);
+	generateTake(width/4 * 3);
 
-	for(let j = 0; j < Stanzax.length; j++) {
-		Stanzax[j].tategaki();
-		Stanzax[j].display();
+
+	for(let j = 0; j < tanzax.length; j++) {
+		tanzax[j].tategaki();
+		tanzax[j].display();
 	}
 
 }
@@ -69,7 +69,7 @@ function send() {
 	let y = random(height);
 
 	if(name != "" && wish != "") {
-		Stanzax.push(new SimulatedTanzaku(name, wish, x, y));
+		tanzax.push(new Tanzaku(name, wish, x, y));
 
 		var url = "https://script.google.com/macros/s/AKfycbzFIfTrPr8GZiz99nkn8cg3XHYxn72hOglzRAfiE7N9tUa6PSI/exec?name=" + name + "&wish=" + wish + "&x=" + x + "&y=" + y; // リクエスト先URL
 

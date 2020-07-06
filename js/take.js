@@ -75,10 +75,10 @@ function take(_x, _y, _a) {
   pop();
 }
 
-function generateTake() {
+function generateTake(_w) {
 	push();
 
-	translate(width/2, height);
+	translate(_w, height);
   take(0, 0, 0);
 
   push();
