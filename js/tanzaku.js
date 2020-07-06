@@ -35,7 +35,7 @@ class Tanzaku {
 		push();
 		translate(w(this.x), h(this.y));
 		fill(this.c, 60, 100);
-		rect(-30, 20, 60, 180 + 2 * this.tw.length + 5 * this.tn.length);
+		rect(-30, 20, 60, 180 + 2 * this.tw.length + 6 * this.tn.length);
 		textSize(12);
 		fill(0, 0, 0);
 		text(this.tw, 0, 50);
@@ -82,7 +82,7 @@ class cTanzaku {
 		push();
 		translate(this.x, this.y);
 		fill(0, 0, 100);
-		rect(-30, 20, 60, 180 + 2 * this.tw.length + 10 * this.tn.length);
+		rect(-30, 20, 60, 180 + 2 * this.tw.length + 6 * this.tn.length);
 		textSize(12);
 		fill(0, 0, 0);
 		text(this.tw, 0, 50);
