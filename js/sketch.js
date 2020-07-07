@@ -131,14 +131,14 @@ function windowResized(){
 	resizeCanvas(windowWidth, windowHeight);
 }
 
-function keyPressed() {
-	if(key == 'r' || key == "S") {
-		print('push')
-		if(isRecording == true) {
-			stopRecording();
-		} else {
-			startRecording();
-		}
-		isRecording = !isRecording;
-	}
-}
+//function keyPressed() {
+//	if(key == 'r' || key == "S") {
+//		print('push')
+//		if(isRecording == true) {
+//			stopRecording();
+//		} else {
+//			startRecording();
+//		}
+//		isRecording = !isRecording;
+//	}
+//}
