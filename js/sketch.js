@@ -3,6 +3,8 @@ let tanzax = [];
 let ct;
 let tanzakuData, input, input2, button;
 
+let isRecording = false;
+
 function preload() {
 	tanzakuData = loadJSON('https://script.google.com/macros/s/AKfycbzFIfTrPr8GZiz99nkn8cg3XHYxn72hOglzRAfiE7N9tUa6PSI/exec?');
 }
@@ -52,8 +54,6 @@ function draw() {
 	generateTake(width/2);
 	generateTake(width/4 * 1);
 	generateTake(width/4 * 3);
-//	generateTake(width/8 * 5);
-//	generateTake(width/8 * 3);
 
 
 	for(let j = 0; j < tanzax.length; j++) {
@@ -96,12 +96,6 @@ function draw() {
 	}
 
 
-//	for(let k = 0; k < 100; k++) {
-//		stroke(0, 0, 100, 100);
-//		line(w(k), 0, w(k), height);
-//		line(0, h(k), width, h(k));
-//	}
-
 }
 
 
@@ -115,7 +109,6 @@ function send() {
 	if(name != "" && wish != "") {
 		ct = new cTanzaku(name, wish);
 
-//		print(x + "\n" + y);
 
 	} else {
 		alert("名前と願い事書いてください");
@@ -124,7 +117,6 @@ function send() {
 	input2.value('');
 }
 
-//座標は0から100で指定
 function w(_n) {
   const w = width/100;
   return w * _n;
@@ -135,7 +127,18 @@ function h(_n) {
   return h * _n;
 }
 
-
 function windowResized(){
 	resizeCanvas(windowWidth, windowHeight);
+}
+
+function keyPressed() {
+	if(key == 'r' || key == "S") {
+		print('push')
+		if(isRecording == true) {
+			stopRecording();
+		} else {
+			startRecording();
+		}
+		isRecording = !isRecording;
+	}
 }
